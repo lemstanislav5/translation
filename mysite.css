@@ -1,0 +1,33 @@
+.parent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+
+.block {
+    width: 550px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    text-align: justify;
+}
+span {
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+.highlight {
+    background-color: #8ae0eb;
+}
+.translation{
+    position: absolute;
+    text-align: right;
+    background-color: #8BC34A;
+    right: 0;
+}
