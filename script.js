@@ -251,20 +251,28 @@ const arr = [
 
 const spans = document.querySelectorAll('span');
 let currentIndex = 0;
+let translation;
+let xPosition;
+let yPosition;
 
 function highlightSpan(index) {
     spans.forEach((span, i) => {
         span.classList.remove('highlight');
+        xPosition = document.querySelectorAll('span')[index].offsetLeft;
+        yPosition = document.querySelectorAll('span')[index].offsetTop;
         if (i === index) {
             let res = arr.find(item => {
                 if(item.word == span.innerText){
                     return item;
                 }
             });
+            
             if(res !== undefined){
                 document.getElementsByClassName("translation")[0].innerHTML = "[" + res.translation + "]";
+                translation = res.translation.replace(',', '').replace('.', '');
             } else {
-                document.getElementsByClassName("translation")[0].innerHTML = "[----]";
+                document.getElementsByClassName("translation")[0].innerHTML = "[нет перевода]";
+                translation = undefined;
             }
             span.classList.add('highlight');
         }
@@ -278,6 +286,17 @@ document.addEventListener('keydown', (event) => {
     } else if (event.key === 'ArrowLeft') {
         currentIndex = (currentIndex - 1 + spans.length) % spans.length; // Перейти к предыдущему
         highlightSpan(currentIndex);
+    } else if(event.key === 'ArrowUp') {
+        if(translation !== undefined){
+            let newElem = document.createElement('trn');
+            newElem.textContent = "[" + translation  + "]";
+            newElem.className = 'translat';
+            console.log(xPosition, yPosition)
+            newElem.style.left = xPosition + 'px';
+            newElem.style.top = yPosition + 'px';
+            console.log(document.querySelectorAll('span')[currentIndex])
+            document.querySelectorAll('span')[currentIndex].insertAdjacentElement('beforebegin', newElem);
+        }
     }
 });
 

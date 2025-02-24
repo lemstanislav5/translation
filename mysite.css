@@ -19,15 +19,25 @@
     text-align: justify;
 }
 span {
-    padding: 5px;
+    padding: 2px 4px;
     transition: background-color 0.3s;
+    line-height: 28px;
 }
 .highlight {
-    background-color: #8ae0eb;
+    text-decoration: underline;
+    color: #03A9F4;
 }
 .translation{
     position: absolute;
     text-align: right;
-    background-color: #8BC34A;
+    background-color:#c5ffcf;
     right: 0;
+}
+.translat{
+    background-color: #c5ffcf;
+    text-transform: lowercase;
+    position: absolute;
+    margin-top: -7px;
+    font-size: 11px;
+    line-height: 11px;
 }
